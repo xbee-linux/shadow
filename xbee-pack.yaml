@@ -45,13 +45,13 @@ description: |
     vipw: Edits the /etc/passwd or /etc/shadow files
     libsubid: library for process subordinate id ranges for users
 
-in:
+var:
   version: "4.9"
 
 provision:
   - url:
-      from: https://github.com/shadow-maint/shadow/releases/download/v{% version %}/shadow-{% version %}.tar.xz
-      todir: "{% xbeeSrc %}"
+      from: https://github.com/shadow-maint/shadow/releases/download/v{{ .version }}/shadow-{{ .version }}.tar.xz
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
@@ -62,7 +62,7 @@ build:
         - find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
         - ./configure --sysconfdir=/etc --disable-static --with-group-name-max-length=32
         - make
-        - make exec_prefix=/usr install DESTDIR={% xbeeOut %}
-      directory: "{% xbeeSrc %}/shadow-{% version %}"
+        - make exec_prefix=/usr install DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/shadow-{{ .version }}"
 
 
