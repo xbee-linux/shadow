@@ -49,9 +49,7 @@ var:
   version: "4.9"
 
 provision:
-  - url:
-      from: https://github.com/shadow-maint/shadow/releases/download/v{{ .version }}/shadow-{{ .version }}.tar.xz
-      todir: "{{ .xbee.src }}"
+  url: https://github.com/shadow-maint/shadow/releases/download/v{{ .version }}/shadow-{{ .version }}.tar.xz
 
 build:
   - shell:
