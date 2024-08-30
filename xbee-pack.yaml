@@ -46,7 +46,8 @@ description: |
     libsubid: library for process subordinate id ranges for users
 
 var:
-  version: "4.9"
+  xbee:
+    version: "4.9"
 
 provision:
   url: https://github.com/shadow-maint/shadow/releases/download/v{{ .version }}/shadow-{{ .version }}.tar.xz
