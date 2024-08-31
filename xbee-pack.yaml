@@ -50,7 +50,7 @@ var:
     version: "4.9"
 
 provision:
-  url: https://github.com/shadow-maint/shadow/releases/download/v{{ .version }}/shadow-{{ .version }}.tar.xz
+  url: https://github.com/shadow-maint/shadow/releases/download/v{{ .xbee.version }}/shadow-{{ .xbee.version }}.tar.xz
 
 build:
   - shell:
@@ -62,6 +62,6 @@ build:
         - ./configure --sysconfdir=/etc --disable-static --with-group-name-max-length=32
         - make
         - make exec_prefix=/usr install DESTDIR={{ .xbee.out }}
-      directory: "{{ .xbee.src }}/shadow-{{ .version }}"
+      directory: "{{ .xbee.src }}/shadow-{{ .xbee.version }}"
 
 
